@@ -1,0 +1,553 @@
+export const esTranslations = {
+  testPayment: {
+    title: "Prueba de Pago",
+    subtitle: "Prueba tu procesamiento de pagos con una transacción de $1.00",
+    testDetails: "Detalles de Prueba de Pago",
+    description: "Esta página te permite probar el procesamiento de pagos utilizando tarjeta de crédito (Stripe) o PayPal por una transacción de $1.00.",
+    amount: "Monto de Prueba",
+    createPayment: "Crear Pago de Prueba",
+    processing: "Procesando...",
+    intentCreated: "Intención de Pago Creada",
+    readyForPayment: "Ahora puedes probar el proceso de pago",
+    error: "Error",
+    genericError: "Ocurrió un error inesperado",
+    paypalFailed: "El pago con PayPal falló",
+    success: "Pago Exitoso",
+    successMessage: "Tu pago de prueba se procesó correctamente. No se realizó ningún cargo real.",
+    paypalSuccessful: "Pago de prueba con PayPal completado exitosamente",
+    backToDashboard: "Volver al Panel",
+    creditCard: "Tarjeta de Crédito",
+    stripeNotConfigured: "El procesamiento de pagos con Stripe no está disponible",
+  },
+  navigation: {
+    home: "Inicio",
+    services: "Servicios",
+    projects: "Proyectos",
+    about: "Nosotros",
+    contact: "Contacto",
+    blog: "Blog",
+    login: "Iniciar Sesión",
+    signup: "Registrarse",
+    dashboard: "Panel",
+    logout: "Cerrar Sesión"
+  },
+  hero: {
+    title: "Soluciones de Marketing Digital Impulsadas por IA",
+    subtitle: "TOBAIS es una agencia creativa enfocada en Diseño Web, Automatización, Branding y Marketing en Redes Sociales — ayudando a emprendedores y empresas a construir una fuerte presencia digital en U.S. y América Latina.",
+    cta1: "Obtener Cotización",
+    cta2: "Programar una Llamada",
+    scrollDown: "Desplázate Abajo",
+    features: {
+      ai: {
+        title: "Marketing con IA",
+        description: "Algoritmos avanzados que analizan datos para crear estrategias de marketing personalizadas para tu negocio."
+      },
+      analytics: {
+        title: "Analítica en Tiempo Real",
+        description: "Seguimiento y visualización de datos para medir el éxito de tus campañas de manera integral."
+      },
+      automation: {
+        title: "Automatización Inteligente",
+        description: "Automatización de flujos de trabajo que ahorra tiempo y aumenta la eficiencia en tus esfuerzos de marketing."
+      }
+    }
+  },
+  services: {
+    title: "Nuestros Servicios",
+    subtitle: "Ayudamos a las empresas a transformar su presencia digital con soluciones integrales.",
+    buyNow: "Comprar Ahora",
+    contactUs: "Comenzar",
+    price: "desde",
+    webDesign: {
+      title: "Diseño Web",
+      description: "Sitios web responsivos personalizados que atraen y convierten visitantes con diseños modernos.",
+      features: [
+        "Diseño responsive",
+        "Optimización SEO",
+        "UI/UX moderno"
+      ],
+      price: "desde"
+    },
+    automation: {
+      title: "Automatización",
+      description: "Optimiza los procesos de tu negocio con soluciones de automatización impulsadas por IA.",
+      features: [
+        "Automatización de flujos",
+        "Integraciones con IA",
+        "Análisis de negocios"
+      ],
+      price: "desde"
+    },
+    branding: {
+      title: "Branding",
+      description: "Crea una identidad de marca memorable que resuene con tu audiencia objetivo.",
+      features: [
+        "Diseño de logotipo",
+        "Estrategia de marca",
+        "Materiales de marketing"
+      ],
+      price: "desde"
+    },
+    socialMedia: {
+      title: "Marketing en Redes Sociales",
+      description: "Interactúa con tu audiencia a través de estratégicas campañas de marketing en redes sociales.",
+      features: [
+        "Marketing en Facebook",
+        "Contenido para Instagram",
+        "Campañas de WhatsApp",
+        "Estrategia para LinkedIn"
+      ],
+      price: "desde"
+    },
+    accounting: {
+      title: "Contabilidad",
+      description: "Servicios contables profesionales para ayudar a gestionar eficazmente las finanzas de tu empresa.",
+      features: [
+        "Contabilidad",
+        "Preparación de impuestos",
+        "Informes financieros",
+        "Consultoría empresarial"
+      ],
+      price: "desde"
+    }
+  },
+  about: {
+    title: "Sobre TOBAIS",
+    description: "TOBAIS, Technology on Business Artificial Intelligence Solutions, es una agencia digital creativa comprometida con el empoderamiento de pequeñas empresas en U.S. y América Latina. Combinamos diseño innovador, tecnología de vanguardia y pensamiento estratégico para entregar soluciones que impulsan el crecimiento.",
+    mission: {
+      title: "Nuestra Misión",
+      description: "Proporcionar soluciones digitales accesibles y de alta calidad que nivelen el campo de juego para las pequeñas empresas que compiten en el panorama digital."
+    },
+    vision: {
+      title: "Nuestra Visión",
+      description: "Convertirnos en el socio preferido para pequeñas empresas que buscan transformar su presencia digital a través de tecnologías innovadoras y estrategias creativas."
+    }
+  },
+  testimonials: {
+    title: "Lo que Dicen Nuestros Clientes",
+    prev: "Anterior",
+    next: "Siguiente"
+  },
+  faq: {
+    title: "Preguntas Frecuentes",
+    items: [
+      {
+        question: "¿Cuánto tiempo toma completar un sitio web?",
+        answer: "Normalmente, nuestros proyectos de diseño web tardan entre 2 y 6 semanas dependiendo de la complejidad. Los sitios sencillos pueden completarse en tan solo 2 semanas, mientras que proyectos más complejos con características personalizadas pueden tardar entre 4 y 6 semanas."
+      },
+      {
+        question: "¿Ofrecen servicios de mantenimiento?",
+        answer: "Sí, ofrecemos paquetes de mantenimiento continuo para mantener su sitio web seguro, actualizado y funcionando sin problemas. Nuestros planes de mantenimiento mensual incluyen actualizaciones regulares, verificaciones de seguridad, copias de seguridad y soporte técnico."
+      },
+      {
+        question: "¿Qué servicios de automatización proporcionan?",
+        answer: "Nuestros servicios de automatización incluyen automatización de flujos de trabajo, automatización de marketing por correo electrónico, programación de redes sociales, gestión de datos de clientes, integración de CRM y creación de contenido impulsada por IA. Personalizamos soluciones basadas en sus necesidades comerciales específicas."
+      },
+      {
+        question: "¿Trabajan con clientes tanto en EE. UU. como en América Latina?",
+        answer: "Sí, atendemos con orgullo a clientes tanto en U.S. como en toda América Latina. Nuestro equipo es completamente bilingüe (inglés/español) y está familiarizado con los panoramas comerciales en ambas regiones, lo que nos permite proporcionar soluciones culturalmente relevantes."
+      }
+    ]
+  },
+  contact: {
+    title: "Ponte en Contacto",
+    subtitle: "¿Tienes un proyecto en mente? Hablemos sobre cómo podemos ayudar a tu negocio a prosperar en el mundo digital.",
+    form: {
+      name: "Nombre",
+      email: "Correo electrónico",
+      serviceType: "Tipo de Servicio",
+      selectService: "Selecciona un servicio",
+      message: "Mensaje",
+      smsConsent: "Acepto recibir notificaciones SMS de TOBAIS relacionadas con actualizaciones de servicios, recordatorios de citas y mensajes importantes relacionados con mi cuenta. Entiendo que puedo optar por no recibirlos en cualquier momento respondiendo STOP.",
+      submit: "Enviar",
+      errors: {
+        name: "El nombre es requerido",
+        email: "Un correo válido es requerido",
+        message: "El mensaje es requerido"
+      },
+      success: "¡Éxito!",
+      error: "Error",
+      emailSent: "Tu mensaje ha sido enviado y una confirmación por correo electrónico ha sido enviada a tu bandeja de entrada.",
+      partialSuccess: "Mensaje Recibido",
+      emailIssues: "Tu mensaje ha sido guardado, pero hubo un problema al enviar las notificaciones por correo electrónico.",
+      messageSaved: "Tu mensaje ha sido guardado con éxito. Nos pondremos en contacto contigo en breve.",
+      smsOptInConfirmation: "Si optaste por recibirlos, comenzarás a recibir notificaciones SMS de TOBAIS. Puedes optar por no recibirlos en cualquier momento respondiendo STOP.",
+      genericError: "Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo más tarde."
+    },
+    info: {
+      title: "Información de Contacto",
+      email: "Correo",
+      phone: "Teléfono",
+      locations: "Oficinas",
+      locationText: "Charlotte, NC (US) & Montevideo (Uruguay)",
+      connect: "Conéctate con Nosotros",
+      schedule: {
+        title: "Programa una Consulta",
+        description: "Reserva una consulta gratuita de 30 minutos para discutir las necesidades de tu proyecto.",
+        button: "Reservar una cita"
+      },
+      map: {
+        title: "Encuéntranos",
+        description: "Nuestras oficinas en Charlotte (Carolina del Norte) y Montevideo (Uruguay) están estratégicamente ubicadas para atender a clientes en América del Norte y del Sur."
+      }
+    }
+  },
+  cta: {
+    title: "¿Listo para Transformar tu Presencia Digital?",
+    description: "Colaboremos para crear soluciones digitales inteligentes que ayuden a tu negocio a prosperar en el competitivo panorama actual.",
+    button1: "Iniciar tu Proyecto",
+    button2: "Saber Más"
+  },
+  footer: {
+    description: "Soluciones digitales inteligentes para empresas en U.S. y América Latina.",
+    services: "Servicios",
+    company: "Empresa",
+    legal: "Legal",
+    aboutUs: "Sobre Nosotros",
+    blog: "Blog",
+    careers: "Carreras",
+    contact: "Contacto",
+    privacyPolicy: "Política de Privacidad",
+    termsOfService: "Términos de Servicio",
+    smsOptInPolicy: "Política de Suscripción SMS",
+    cookiePolicy: "Política de Cookies",
+    copyright: "© 2025 TOBAIS. Todos los derechos reservados.",
+    language: "Español"
+  },
+  smsOptIn: {
+    title: "Política de Suscripción SMS",
+    intro: "En TOBAIS, valoramos su privacidad y nos aseguramos de que solo reciba mensajes de texto a los que haya dado su consentimiento explícito.",
+    consent: "Al enviar su información a través de nuestro formulario de contacto, acepta recibir notificaciones SMS de TOBAIS relacionadas con actualizaciones de servicios, recordatorios de citas y mensajes importantes relacionados con su cuenta.",
+    keyPoints: {
+      title: "Puntos Clave:",
+      noUnsolicited: "Nunca recibirá mensajes de marketing no solicitados.",
+      optOut: "Puede optar por no recibir notificaciones SMS en cualquier momento respondiendo STOP a cualquiera de nuestros mensajes.",
+      privacyPolicy: "Para obtener más detalles sobre cómo manejamos sus datos, consulte nuestra"
+    },
+    privacyPolicyLink: "Política de Privacidad",
+    contact: {
+      title: "¿Preguntas?",
+      description: "Si tiene alguna pregunta, contáctenos en"
+    },
+    consentButton: "Consentimiento y Contáctanos"
+  },
+  ai: {
+    label: "SOLUCIONES POTENCIADAS POR IA",
+    title: "Transforma tu Marketing Digital con IA",
+    description: "Nuestro conjunto de herramientas impulsadas por IA ayuda a las empresas a crear contenido atractivo, analizar tendencias del mercado y ofrecer experiencias personalizadas que impulsan el crecimiento.",
+    learnMore: "Más Información",
+    getStarted: "Comenzar",
+    solutions: {
+      contentGeneration: {
+        title: "Generación de Contenido",
+        description: "Herramienta potenciada por IA para crear contenido atractivo para múltiples plataformas de redes sociales."
+      },
+      multilingual: {
+        title: "Soporte Multilingüe",
+        description: "Traduzca y adapte automáticamente su contenido para audiencias globales."
+      },
+      brandingAssistant: {
+        title: "Asistente de Marca",
+        description: "Herramientas de IA que ayudan a desarrollar y mantener mensajes de marca consistentes."
+      },
+      customerSupport: {
+        title: "Soporte al Cliente",
+        description: "Chatbots inteligentes y sistemas de soporte para mejorar la experiencia del cliente."
+      },
+      marketAnalysis: {
+        title: "Análisis de Mercado",
+        description: "Información basada en datos para comprender las tendencias del mercado y el comportamiento del cliente."
+      }
+    },
+    cta: {
+      title: "¿Listo para aprovechar la IA para tu negocio?",
+      description: "Crea una cuenta para acceder a nuestra suite completa de herramientas de marketing impulsadas por IA.",
+      button: "Obtener Acceso Ahora"
+    },
+    automation: "Automatización con IA",
+    tryData: "pruébalo con tus datos",
+    showcase: {
+      badge: "Showcase de Automatización con IA",
+      mainMenu: "Menú Principal",
+      title: "TOBAIS",
+      subtitle: "Donde la Automatización Cobra Vida",
+      description: "Experimenta el poder de la inteligencia artificial trabajando en tiempo real para transformar tu negocio",
+      liveDemoButton: "Ver Demos en Vivo",
+      realTimeAI: "IA en Tiempo Real",
+      fullyAutomated: "100% Automatizado",
+      interactiveTitle: "Automatizaciones en Acción",
+      interactiveSubtitle: "Demos Interactivos",
+      interactiveDescription: "Haz clic en cualquier demo para ver la IA trabajando en tiempo real",
+      features: {
+        aiBriefs: {
+          title: "AI Marketing Briefs",
+          description: "Genera estrategias de marketing personalizadas con IA"
+        },
+        analytics: {
+          title: "Analíticas en Tiempo Real",
+          description: "Monitoreo en tiempo real de métricas clave"
+        },
+        automation: {
+          title: "Flujos de Automatización",
+          description: "Workflows inteligentes que se ejecutan automáticamente"
+        },
+        insights: {
+          title: "Insights Predictivos",
+          description: "Predicciones basadas en machine learning"
+        }
+      },
+      demoButton: "Demo en Vivo"
+    }
+  },
+  auth: {
+    loginTitle: "Bienvenido de Nuevo",
+    loginSubtitle: "Inicia sesión para acceder a tu cuenta",
+    registerTitle: "Crear Cuenta",
+    registerSubtitle: "Únete a TOBAIS para transformar tu presencia digital",
+    forgotPasswordTitle: "Restablecer Contraseña",
+    forgotPasswordSubtitle: "Ingresa tu correo para recibir un código de verificación",
+    resetPasswordTitle: "Crear Nueva Contraseña",
+    resetPasswordSubtitle: "Ingresa el código y tu nueva contraseña",
+    username: "Usuario",
+    email: "Correo Electrónico",
+    password: "Contraseña",
+    newPassword: "Nueva Contraseña",
+    confirmPassword: "Confirmar Contraseña",
+    verificationCode: "Código de Verificación",
+    fullName: "Nombre Completo",
+    firstName: "Nombre",
+    lastName: "Apellido",
+    loginButton: "Iniciar Sesión",
+    registerButton: "Registrarse",
+    forgotPasswordButton: "Enviar Código",
+    resetPasswordButton: "Restablecer Contraseña",
+    resendCodeButton: "Reenviar Código",
+    processing: "Procesando...",
+    alreadyHaveAccount: "¿Ya tienes una cuenta?",
+    noAccount: "¿No tienes una cuenta?",
+    loginLink: "Inicia sesión aquí",
+    registerLink: "Regístrate aquí",
+    forgotPasswordLink: "¿Olvidaste tu contraseña?",
+    backToLoginLink: "Volver al inicio de sesión",
+    heroTitle: "Transforma tu Presencia Digital",
+    heroSubtitle: "Accede a servicios y herramientas premium para hacer crecer tu negocio en línea.",
+    errors: {
+      usernameRequired: "El nombre de usuario es requerido",
+      emailRequired: "El correo electrónico es requerido",
+      emailInvalid: "Por favor ingresa una dirección de correo válida",
+      emailAlreadyInUse: "Este correo ya está registrado",
+      emailCheckingAvailability: "Verificando disponibilidad del correo...",
+      passwordRequired: "La contraseña es requerida",
+      passwordLength: "La contraseña debe tener al menos 6 caracteres",
+      codeRequired: "El código de verificación es requerido",
+      passwordsDoNotMatch: "Las contraseñas no coinciden",
+      codeLengthInvalid: "El código debe tener exactamente 6 dígitos"
+    },
+    passwordRequirements: "La contraseña debe tener al menos 8 caracteres e incluir mayúsculas, minúsculas, números y caracteres especiales.",
+    codeHelp: "Ingresa el código de 6 dígitos enviado a tu correo",
+    footer: "© 2025 TOBAIS. Todos los derechos reservados."
+  },
+  dashboard: {
+    welcome: "Bienvenido a tu panel,",
+    title: "Panel",
+    projects: "Mis Proyectos",
+    socialMedia: "Redes Sociales",
+    analytics: "Analíticas",
+    settings: "Configuración",
+    adminPanel: "Panel de Administrador",
+    noProjects: "Aún no hay proyectos",
+    socialMediaGenerator: {
+      title: "Generador de Contenido IA para Redes Sociales",
+      description: "Genera contenido atractivo para redes sociales para tu negocio",
+      prompt: "¿Sobre qué te gustaría publicar?",
+      businessInfo: "Información del negocio",
+      platform: "Plataforma",
+      language: "Idioma",
+      generate: "Generar Contenido",
+      save: "Guardar Contenido",
+      schedule: "Programar Publicación",
+      selectPlatform: "Seleccionar plataforma",
+      twitter: "Twitter",
+      facebook: "Facebook",
+      instagram: "Instagram",
+      linkedin: "LinkedIn",
+      generatedContent: "Contenido Generado",
+      hashtags: "Hashtags Sugeridos",
+      savedSuccess: "Contenido guardado exitosamente",
+      multiPlatform: "Generador Multi-plataforma",
+      selectPlatforms: "Seleccionar plataformas",
+      generateMulti: "Generar para Todas las Plataformas"
+    },
+    contentRecommendations: {
+      title: "Recomendaciones de Contenido",
+      description: "Obtén recomendaciones de contenido impulsadas por IA basadas en tu audiencia",
+      audience: "Audiencia Objetivo",
+      industry: "Industria",
+      generate: "Obtener Recomendaciones",
+      topics: "Temas Sugeridos",
+      contentTypes: "Tipos de Contenido Recomendados",
+      platforms: "Plataformas Recomendadas",
+      noRecommendations: "Aún no hay recomendaciones. Genera para ver resultados."
+    }
+  },
+  checkout: {
+    title: "Pago",
+    loading: "Cargando...",
+    loadingPayment: "Cargando información de pago...",
+    loadingStripe: "Cargando formulario de pago...",
+    paymentInformation: "Información de Pago",
+    payWithCard: "Pagar con Tarjeta de Crédito",
+    payNow: "Pagar Ahora",
+    processing: "Procesando...",
+    paymentSuccessful: "Pago Exitoso",
+    paymentFailed: "Pago Fallido",
+    paymentError: "Error de Pago",
+    paymentCancelled: "Pago Cancelado",
+    paymentCancelledDescription: "Has cancelado el proceso de pago.",
+    stripeNotInitialized: "Procesador de pago no inicializado. Por favor, inténtelo de nuevo más tarde.",
+    stripeUnavailable: "Pagos con Tarjeta No Disponibles",
+    stripeNotConfigured: "El sistema de pago con tarjeta no está configurado. Por favor, use PayPal.",
+    pleaseSelectPayPal: "Por favor, seleccione la opción de pago PayPal a continuación.",
+    payWithPayPal: "Conecte con PayPal para procesar su pago de forma segura.",
+    unexpectedState: "Estado de Pago Inesperado",
+    unexpectedError: "Ha ocurrido un error inesperado.",
+    contactSupport: "Por favor, contacte con soporte para recibir asistencia.",
+    tryAgain: "Por favor, inténtelo de nuevo o utilice otro método de pago.",
+    thankYou: "¡Gracias por su pago!",
+    additionalAuthRequired: "Autenticación Adicional Requerida",
+    followInstructions: "Por favor, siga las instrucciones para completar su pago.",
+    orderSummary: "Resumen del Pedido",
+    invoiceSummary: "Resumen de Facturas",
+    invoiceSummaryDesc: "Resumen de {count} facturas seleccionadas",
+    invoiceCount: "Número de Facturas",
+    subtotal: "Subtotal",
+    tax: "Impuesto (8%)",
+    total: "Total",
+    securePayment: "Los pagos se procesan de forma segura",
+    securePaymentStripe: "Los pagos se procesan de forma segura a través de Stripe",
+    securePaymentPaypal: "Los pagos se procesan de forma segura a través de PayPal",
+    guaranteeMessage: "Garantía de devolución de dinero de 30 días si no está satisfecho.",
+    noServiceSelected: "Ningún Servicio Seleccionado",
+    pleaseSelectService: "Por favor, seleccione un servicio antes de proceder al pago.",
+    noInvoicesSelected: "Ninguna Factura Seleccionada",
+    pleaseSelectInvoices: "Por favor, seleccione facturas antes de proceder al pago.",
+    browseServices: "Explorar Servicios",
+    backToDashboard: "Volver al Panel",
+    testPayPalPayment: "Prueba de Pago con PayPal",
+    testPaymentDescription: "Este es un pago de prueba de $1.00 para verificar la integración con PayPal.",
+    testPaymentCompleted: "Pago de prueba completado con éxito.",
+    realPaymentWarning: "Este es un pago real. Se cobrará a su tarjeta.",
+    paypalMissingConfig: "La configuración de PayPal está incompleta. Por favor, contacte con soporte.",
+    configurationError: "Error de Configuración",
+    errorCreatingOrder: "Error al crear la orden",
+    transactionCompleted: "Su transacción se ha completado con éxito.",
+    paypalAuthError: "Error de autenticación de PayPal. El sistema no puede conectarse a PayPal en este momento.",
+    paypalServiceUnavailable: "El servicio de PayPal no está disponible en este momento. Por favor, inténtelo más tarde o contacte con soporte.",
+    contactAdministrator: "Por favor, contacte con el administrador para resolver este problema.",
+    verifyingPayPal: "Verificando la configuración de PayPal...",
+    retryVerification: "Reintentar verificación",
+    credentialsCheckFailed: "La verificación de credenciales de PayPal ha fallado. Por favor, revise lo siguiente:",
+    checkClientIdSecret: "Asegúrese de que el ID de Cliente y el Secreto están correctamente introducidos",
+    ensureEnvironmentMode: "Compruebe que está utilizando el entorno correcto (Sandbox/Live)",
+    tryRegeneratingCredentials: "Intente generar nuevas credenciales API en su cuenta de desarrollador de PayPal"
+  },
+  common: {
+    retry: "Reintentar",
+    cancel: "Cancelar",
+    confirm: "Confirmar",
+    back: "Atrás",
+    next: "Siguiente",
+    save: "Guardar",
+    delete: "Eliminar",
+    edit: "Editar",
+    view: "Ver",
+    loading: "Cargando...",
+    searching: "Buscando...",
+    noResults: "No se encontraron resultados"
+  },
+  paymentSuccess: {
+    title: "¡Pago Exitoso!",
+    description: "Gracias por tu compra. Hemos recibido tu pago y comenzaremos a procesar tu pedido inmediatamente.",
+    transactionId: "ID de Transacción:",
+    viewDashboard: "Ver Panel",
+    returnHome: "Volver al Inicio",
+    supportMessage: "Si tienes alguna pregunta sobre tu compra, por favor contáctanos en:"
+  },
+  process: {
+    title: "Nuestro Proceso",
+    subtitle: "Seguimos un enfoque optimizado para ofrecer soluciones digitales excepcionales para tu negocio",
+    steps: {
+      discover: {
+        title: "Descubrimiento",
+        description: "Comenzamos por entender tu negocio, objetivos y audiencia objetivo para establecer claros objetivos del proyecto."
+      },
+      design: {
+        title: "Diseño",
+        description: "Nuestro equipo creativo desarrolla maquetas y prototipos que se alinean con tu marca y requisitos de experiencia de usuario."
+      },
+      develop: {
+        title: "Desarrollo",
+        description: "Construimos tu solución utilizando tecnologías de vanguardia, asegurando una implementación responsiva, escalable y segura."
+      },
+      deliver: {
+        title: "Entrega",
+        description: "Después de pruebas exhaustivas, lanzamos tu proyecto y proporcionamos capacitación y soporte continuo según sea necesario."
+      }
+    },
+    cta: {
+      title: "¿Listo para Iniciar tu Proyecto?",
+      description: "Colaboremos para crear una solución digital que ayude a tu negocio a prosperar en el competitivo panorama actual.",
+      button: "Comenzar"
+    }
+  },
+  projects: {
+    title: "Proyectos Destacados",
+    subtitle: "Echa un vistazo a algunos de nuestros exitosos proyectos para clientes y los resultados que hemos entregado",
+    noProjects: "No hay proyectos disponibles en este momento. ¡Vuelva pronto!",
+    viewCase: "Ver Caso de Estudio",
+    viewAll: "Ver Todos los Proyectos"
+  },
+  stats: {
+    clients: "Clientes",
+    projects: "Proyectos",
+    awards: "Premios",
+    countries: "Países"
+  },
+  billing: {
+    title: "Facturación y Pagos",
+    description: "Administre sus facturas y pagos de suscripción",
+    pendingInvoices: "Facturas Pendientes",
+    paymentHistory: "Historial de Pagos",
+    dueDate: "Fecha de Vencimiento",
+    pending: "Pendiente",
+    paid: "Pagado",
+    overdue: "Vencido",
+    allPaid: "¡Todo Pagado!",
+    noPendingInvoices: "No tiene facturas pendientes en este momento.",
+    noPaymentHistory: "Sin Historial de Pagos",
+    noCompletedPayments: "Aún no ha realizado ningún pago.",
+    selectedInvoices: "Facturas Seleccionadas: {count}",
+    payNow: "Pagar Ahora",
+    paymentMethods: "Métodos de Pago",
+    securePaymentMessage: "Todos los pagos se procesan de forma segura a través de nuestro proveedor de pagos.",
+    paidOn: "Pagado el",
+    downloadInvoice: "Descargar factura PDF",
+    createdAt: "Creado el"
+  },
+  admin: {
+    serviceStatus: {
+      title: "Estado de Servicios",
+      active: "Activo",
+      inactive: "Inactivo",
+      environment: "Entorno",
+      clientId: "ID de Cliente",
+      clientSecret: "Clave Secreta de Cliente",
+      provider: "Proveedor",
+      email: "Servicio de Correo",
+      gmailCredentials: "Credenciales de Gmail",
+      fetchError: "Error al obtener el estado de los servicios",
+      note: "Nota:",
+      noteContent: "Si un servicio aparece como inactivo, verifique las variables de entorno y las credenciales de API."
+    }
+  }
+};

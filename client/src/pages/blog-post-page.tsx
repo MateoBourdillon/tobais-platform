@@ -1,0 +1,229 @@
+import { useQuery } from "@tanstack/react-query";
+import { BlogPost } from "@shared/schema";
+import { useLocation, Link } from "wouter";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { 
+  Card, 
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle 
+} from "@/components/ui/card";
+import { Separator } from "@/components/ui/separator";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft, Calendar, User } from "lucide-react";
+import { Skeleton } from "@/components/ui/skeleton";
+import { format } from "date-fns";
+import { es } from "date-fns/locale";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import SEOHead from "@/components/utils/SEOHead";
+
+export default function BlogPostPage() {
+  const [location] = useLocation();
+  const { language, t } = useLanguage();
+  
+  // Get slug from the URL path (fix: ensure location is treated as string)
+  const slug = typeof location === 'string' ? location.split("/").pop() : '';
+  
+  const { 
+    data: post, 
+    isLoading, 
+    error 
+  } = useQuery<BlogPost>({
+    queryKey: [`/api/blog/${slug}`],
+    enabled: !!slug,
+  });
+
+  if (isLoading) {
+    return (
+      <>
+        <Navbar />
+        <div className="container mx-auto py-12">
+          <Link href="/blog" className="flex items-center text-primary mb-6 hover:underline">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("blog.backToBlog", "Back to Blog")}
+          </Link>
+          
+          <Card>
+            <CardHeader>
+              <Skeleton className="h-10 w-3/4 mb-2" />
+              <div className="flex items-center text-gray-500 gap-4">
+                <Skeleton className="h-5 w-32" />
+                <Skeleton className="h-5 w-32" />
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="w-full h-64 mb-8">
+                <Skeleton className="h-full w-full" />
+              </div>
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-full mb-2" />
+              <Skeleton className="h-4 w-3/4" />
+            </CardContent>
+          </Card>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  if (error || !post) {
+    return (
+      <>
+        <Navbar />
+        <div className="container mx-auto py-12">
+          <Link href="/blog" className="flex items-center text-primary mb-6 hover:underline">
+            <ArrowLeft className="mr-2 h-4 w-4" />
+            {t("blog.backToBlog", "Back to Blog")}
+          </Link>
+          
+          <Card className="bg-red-50 dark:bg-red-900/10">
+            <CardContent className="pt-6">
+              <p className="text-red-700 dark:text-red-300">
+                {t("blog.postNotFound", "Blog post not found or an error occurred.")}
+              </p>
+              <Button 
+                variant="outline" 
+                className="mt-4"
+                asChild
+              >
+                <Link href="/blog">
+                  {t("blog.returnToBlog", "Return to Blog")}
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  const title = language === "en" ? post.title : post.titleEs || post.title;
+  const content = language === "en" ? post.content : post.contentEs || post.content;
+  const formattedDate = format(new Date(post.createdAt), 'MMMM d, yyyy', {
+    locale: language === "es" ? es : undefined
+  });
+  
+  // Generate SEO description from content (first 160 characters)
+  const seoDescription = content
+    ?.replace(/#+\s/g, '') // Remove markdown headers
+    ?.replace(/\*\*([^*]+)\*\*/g, '$1') // Remove bold markdown
+    ?.replace(/\n+/g, ' ') // Replace newlines with spaces
+    ?.substring(0, 160)
+    ?.trim() + (content && content.length > 160 ? '...' : '');
+    
+  // Extract keywords from content (simplified approach)
+  const extractKeywords = (text: string): string[] => {
+    const commonWords = ['the', 'is', 'at', 'which', 'on', 'and', 'or', 'but', 'in', 'with', 'to', 'for', 'of', 'as', 'by', 'that', 'this', 'be', 'are', 'was', 'were', 'been', 'have', 'has', 'had', 'do', 'does', 'did', 'will', 'would', 'should', 'could', 'can', 'may', 'might', 'must', 'shall'];
+    const words = text.toLowerCase()
+      .replace(/[^a-z0-9\s]/g, '')
+      .split(/\s+/)
+      .filter(word => word.length > 3 && !commonWords.includes(word))
+      .slice(0, 10);
+    return Array.from(new Set(words));
+  };
+  
+  const contentKeywords = content ? extractKeywords(content) : [];
+
+  return (
+    <>
+      <SEOHead 
+        title={title}
+        description={seoDescription || 'Read this insightful article from TOBAIS about digital marketing and AI-powered business solutions.'}
+        type="article"
+        image={post.featuredImage || undefined}
+        url={window.location.href}
+        author="TOBAIS Team"
+        datePublished={post.createdAt instanceof Date ? post.createdAt.toISOString() : post.createdAt}
+        keywords={[
+          ...contentKeywords,
+          'TOBAIS',
+          'digital marketing',
+          'AI-powered solutions',
+          'business automation'
+        ]}
+        canonicalUrl={`${window.location.origin}/blog/${post.slug}`}
+        published={post.published ?? true}
+      />
+      <Navbar />
+      <div className="container mx-auto py-12">
+        <Link href="/blog" className="flex items-center text-primary mb-6 hover:underline">
+          <ArrowLeft className="mr-2 h-4 w-4" />
+          {t("blog.backToBlog", "Back to Blog")}
+        </Link>
+        
+        <article>
+          <h1 className="text-4xl font-bold mb-4">{title}</h1>
+          
+          <div className="flex flex-wrap items-center text-gray-500 dark:text-gray-400 gap-4 mb-8">
+            <div className="flex items-center">
+              <Calendar className="mr-2 h-4 w-4" />
+              <span>{formattedDate}</span>
+            </div>
+          </div>
+          
+          {post.featuredImage && (
+            <div className="mb-8">
+              <img 
+                src={post.featuredImage} 
+                alt={title}
+                className="w-full max-h-96 object-cover rounded-lg" 
+              />
+            </div>
+          )}
+          
+          <div className="prose prose-lg dark:prose-invert max-w-none">
+            {content?.split('\n\n').map((paragraph, index) => {
+              if (paragraph.startsWith('#')) {
+                // Fix: ensure match results are checked properly
+                const matchResult = paragraph.match(/^#+/);
+                const level = matchResult && matchResult[0] ? matchResult[0].length : 1;
+                const text = paragraph.replace(/^#+\s/, '');
+                
+                switch (level) {
+                  case 1:
+                    return <h1 key={index} className="text-3xl font-bold my-4">{text}</h1>;
+                  case 2:
+                    return <h2 key={index} className="text-2xl font-bold my-4">{text}</h2>;
+                  case 3:
+                    return <h3 key={index} className="text-xl font-bold my-3">{text}</h3>;
+                  default:
+                    return <h4 key={index} className="text-lg font-bold my-2">{text}</h4>;
+                }
+              }
+              
+              if (paragraph.startsWith('- ')) {
+                const items = paragraph.split('\n').map(item => item.replace(/^-\s/, ''));
+                return (
+                  <ul key={index} className="list-disc pl-6 my-4">
+                    {items.map((item, i) => <li key={i} className="my-1">{item}</li>)}
+                  </ul>
+                );
+              }
+              
+              // Fix: safely check match result
+              const isOrderedList = paragraph.match(/^\d+\./) !== null;
+              if (isOrderedList) {
+                const items = paragraph.split('\n').map(item => item.replace(/^\d+\.\s/, ''));
+                return (
+                  <ol key={index} className="list-decimal pl-6 my-4">
+                    {items.map((item, i) => <li key={i} className="my-1">{item}</li>)}
+                  </ol>
+                );
+              }
+              
+              return <p key={index} className="my-4 whitespace-pre-line">{paragraph}</p>;
+            })}
+          </div>
+        </article>
+      </div>
+      <Footer />
+    </>
+  );
+}
