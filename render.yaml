@@ -10,7 +10,10 @@ services:
     runtime: node
     plan: free
     region: oregon
-    branch: main
+    # El main de tobais-web es un snapshot de abril de 2025 sin relación con
+    # este código (historiales distintos, 248 archivos de diferencia). El
+    # código que se despliega vive en esta rama.
+    branch: produccion
     buildCommand: npm install && npm run build
     startCommand: npm run start
     envVars:
