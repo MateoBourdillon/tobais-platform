@@ -14,7 +14,17 @@ services:
     # este código (historiales distintos, 248 archivos de diferencia). El
     # código que se despliega vive en esta rama.
     branch: produccion
-    buildCommand: npm install && npm run build
+    # --include=dev es imprescindible por dos motivos:
+    #
+    # 1) NODE_ENV=production (más abajo) también rige durante el build, y con
+    #    esa variable npm omite las devDependencies. vite, esbuild, tailwind y
+    #    los plugins viven ahí, así que sin esto `npm run build` falla.
+    #
+    # 2) server/vite.ts importa "vite" en el nivel superior y server/index.ts
+    #    lo importa siempre, aun en producción donde solo usa serveStatic. Como
+    #    esbuild empaqueta con --packages=external, ese import sigue vivo en
+    #    dist/index.js y Node lo necesita al arrancar, no solo al compilar.
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm run start
     envVars:
       - key: NODE_ENV
