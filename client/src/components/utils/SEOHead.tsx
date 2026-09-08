@@ -137,7 +137,11 @@ export default function SEOHead({
     // Generate URLs and paths
     const currentUrl = url || window.location.href;
     const cleanCanonical = canonicalUrl || currentUrl.split('?')[0]; // Strip query params
-    const fullTitle = `${title} | TOBAIS - AI-Powered Digital Marketing`;
+    // El sufijo largo repetía la marca: la home daba "AI-Powered Digital
+    // Marketing Solutions | TOBAIS - AI-Powered Digital Marketing", 78
+    // caracteres con la misma frase dos veces y cortada en los resultados de
+    // búsqueda. Se deja el nombre a secas y no se añade si ya aparece.
+    const fullTitle = /tobais/i.test(title) ? title : `${title} | TOBAIS`;
     const ogImage = image.startsWith('http') ? image : `${window.location.origin}${image}`;
     const publisherLogo = `${window.location.origin}/images/TOBAIS_NewLogoL_webp.webp`;
     

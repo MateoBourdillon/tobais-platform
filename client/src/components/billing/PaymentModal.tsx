@@ -8,11 +8,16 @@ import { X } from "lucide-react";
 import CheckoutForm from "@/components/payment/CheckoutForm";
 
 // Initialize Stripe with the public key
-if (!import.meta.env.VITE_STRIPE_PUBLIC_KEY) {
+const stripePublicKey = import.meta.env.VITE_STRIPE_PUBLIC_KEY;
+
+if (!stripePublicKey) {
   console.error('Missing Stripe public key. Payments will not work correctly.');
 }
 
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+// Sin clave, loadStripe recibe undefined y lanza al validarla, en cada carga de
+// la web y no solo al pagar. Se carga solo si la clave existe; <Elements> acepta
+// null y espera. Mismo criterio que checkout-page.tsx.
+const stripePromise = stripePublicKey ? loadStripe(stripePublicKey) : null;
 
 interface PaymentModalProps {
   clientSecret: string;

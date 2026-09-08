@@ -9,9 +9,12 @@ attached_assets
 .env.local
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
 
 # Backup and temporary files
 *.bak
 *.new
 *.old
+# Paquete de subida a Hostinger (se regenera con npm run build)
+tobais-hostinger.zip

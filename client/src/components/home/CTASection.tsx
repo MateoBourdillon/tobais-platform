@@ -35,7 +35,7 @@ export default function CTASection() {
           <Link href="/services">
             <Button 
               variant="outline" 
-              className="border-2 border-white text-white hover:bg-white/10 hover:scale-105 focus:ring-4 focus:ring-white/30 font-medium rounded-lg text-sm px-6 py-3 transition-all duration-200 flex items-center gap-2"
+              className="border-2 border-white bg-transparent text-white hover:bg-white/10 hover:scale-105 focus:ring-4 focus:ring-white/30 font-medium rounded-lg text-sm px-6 py-3 transition-all duration-200 flex items-center gap-2"
             >
               <FaInfoCircle className="shrink-0" />
               <span>{t("cta.button2")}</span>
@@ -45,7 +45,7 @@ export default function CTASection() {
           <Link href="/blog">
             <Button 
               variant="outline" 
-              className="border-2 border-white text-white hover:bg-white/10 hover:scale-105 focus:ring-4 focus:ring-white/30 font-medium rounded-lg text-sm px-6 py-3 transition-all duration-200 flex items-center gap-2"
+              className="border-2 border-white bg-transparent text-white hover:bg-white/10 hover:scale-105 focus:ring-4 focus:ring-white/30 font-medium rounded-lg text-sm px-6 py-3 transition-all duration-200 flex items-center gap-2"
               data-testid="button-read-insights"
             >
               <FaBlog className="shrink-0" />

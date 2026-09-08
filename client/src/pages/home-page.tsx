@@ -106,7 +106,7 @@ export default function HomePage() {
       <UniversalSEO
         page="home"
         title={t("hero.title")}
-        description={t("hero.subtitle")}
+        description={t("hero.metaDescription")}
         canonicalPath="/"
         keywords={["AI marketing", "digital agency", "web design", "automation", "TOBAIS", "U.S.", "Latin America", "LATAM"]}
         services={services}

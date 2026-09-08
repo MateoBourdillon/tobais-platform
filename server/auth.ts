@@ -46,6 +46,9 @@ export function setupAuth(app: Express) {
     store: storage.sessionStore,
     cookie: {
       secure: process.env.NODE_ENV === "production",
+      // El frontend está en otro dominio que la API, así que la cookie debe ir
+      // marcada SameSite=None (que exige Secure) para que el navegador la envíe.
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     }
   };

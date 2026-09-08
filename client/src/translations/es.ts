@@ -34,6 +34,9 @@ export const esTranslations = {
   hero: {
     title: "Soluciones de Marketing Digital Impulsadas por IA",
     subtitle: "TOBAIS es una agencia creativa enfocada en Diseño Web, Automatización, Branding y Marketing en Redes Sociales — ayudando a emprendedores y empresas a construir una fuerte presencia digital en U.S. y América Latina.",
+    // Descripción para buscadores: el subtítulo de arriba supera los 155
+    // caracteres que muestra Google. El texto visible no cambia.
+    metaDescription: "Diseño web, automatización, branding y redes sociales para empresas en EE.UU. y Latinoamérica. Equipo bilingüe en Charlotte y Montevideo.",
     cta1: "Obtener Cotización",
     cta2: "Programar una Llamada",
     scrollDown: "Desplázate Abajo",

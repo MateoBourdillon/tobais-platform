@@ -7,6 +7,7 @@ import { BarChart, Zap, Brain } from "lucide-react";
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 import heroVideo from "/images/hiperrealistcTOBAIS.mp4";
+import { heroPoster } from "@/assets/hero-poster";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -16,30 +17,31 @@ export default function Hero() {
     triggerOnce: true,
     threshold: 0.2
   });
-  
+
+  // El héroe siempre está visible al cargar, así que esperar al observador solo
+  // retrasaba el primer pintado: el titular arrancaba en opacidad 0 y tardaba
+  // segundos en aparecer. Se lanza al montar.
   useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-  
+    controls.start("visible");
+  }, [controls]);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.08
       }
     }
   };
-  
+
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: 0.35,
         ease: "easeOut"
       }
     }
@@ -94,6 +96,7 @@ export default function Hero() {
       {/* Video background */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
+        poster={heroPoster}
         autoPlay
         muted
         loop
@@ -101,19 +104,26 @@ export default function Hero() {
       >
         <source src={heroVideo} type="video/mp4" />
       </video>
-      
-      {/* Overlay gradient for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent z-0"></div>
+
+      {/* Capa para legibilidad. En móvil el texto ocupa todo el ancho, así que
+          el degradado horizontal dejaba la mitad derecha sobre vídeo claro:
+          abajo va vertical y a partir de md recupera el horizontal original. */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-black/75 via-black/55 to-black/75 md:bg-gradient-to-r md:from-black/70 md:via-black/40 md:to-transparent"></div>
       
 
       
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 lg:py-28 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <motion.div 
+          {/* initial={false} pinta el bloque ya en su estado final en lugar de
+              arrancar en opacidad 0 esperando a JavaScript: el titular y los
+              botones son lo primero que debe ver el visitante, y si la
+              animación se retrasaba o no llegaba a ejecutarse quedaban
+              invisibles. */}
+          <motion.div
             className="text-white space-y-8"
             variants={containerVariants}
-            initial="hidden"
+            initial={false}
             animate={controls}
           >
             <motion.h1 
@@ -134,23 +144,25 @@ export default function Hero() {
               className="flex flex-wrap gap-4 pt-4"
               variants={itemVariants}
             >
+              {/* El fondo iba en opacity-0 y solo aparecía con group-hover, así
+                  que en móvil —donde no hay hover— estos nunca se veían como
+                  botones. Ahora tienen aspecto sólido en reposo y el hover
+                  queda como realce. */}
               <ScrollLink href="/contact">
-                <div className="relative overflow-hidden group cursor-pointer">
-                  <span className="text-white font-bold text-lg transition-all duration-300 relative z-10 px-8 py-3 inline-block">
+                <div className="relative overflow-hidden group cursor-pointer rounded-lg bg-gradient-to-r from-slate-900 via-blue-950 to-gray-900 ring-1 ring-white/25 shadow-lg transition-all duration-300 hover:ring-white/60 hover:shadow-xl">
+                  <span className="text-white font-bold text-lg relative z-10 px-8 py-3 inline-block">
                     {t("hero.cta1")}
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-950 to-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg"></span>
                   {/* Metallic shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 </div>
               </ScrollLink>
-              
+
               <ScrollLink href="/contact">
-                <div className="relative overflow-hidden group cursor-pointer">
-                  <span className="text-white font-bold text-lg transition-all duration-300 relative z-10 px-8 py-3 inline-block">
+                <div className="relative overflow-hidden group cursor-pointer rounded-lg border border-white/70 transition-all duration-300 hover:bg-white/10 hover:border-white">
+                  <span className="text-white font-bold text-lg relative z-10 px-8 py-3 inline-block">
                     {t("hero.cta2")}
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-slate-900 via-blue-950 to-gray-900 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-lg"></span>
                   {/* Metallic shine effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                 </div>
@@ -186,7 +198,9 @@ export default function Hero() {
                     {feature.icon}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-white mb-2">{feature.title}</h3>
+                    {/* h2: son las primeras subsecciones bajo el h1, saltar a
+                        h3 rompía la jerarquía para lectores de pantalla. */}
+                    <h2 className="text-xl font-semibold text-white mb-2">{feature.title}</h2>
                     <p className="text-white/90">{feature.description}</p>
                   </div>
                 </div>

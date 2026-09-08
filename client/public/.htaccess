@@ -1,0 +1,56 @@
+# Configuración de Apache para el hosting compartido de Hostinger.
+# Vite copia este archivo a dist/public/, que es lo que se sube a public_html.
+
+RewriteEngine On
+
+# Forzar HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Las rutas /api no son del frontend: viven en el backend de Render. Si llegan
+# aquí es que config.js no está apuntando al backend. Se responde 404 limpio en
+# vez de devolver index.html, que le llegaría a la app como HTML donde espera
+# JSON y produciría errores confusos.
+RewriteRule ^api(/|$) - [R=404,L]
+
+# SPA: cualquier ruta que no sea un archivo real se sirve con index.html,
+# para que el router del cliente (wouter) maneje /servicios, /blog/xxx, etc.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]
+
+# Caché larga para los assets con hash en el nombre, que nunca cambian.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# index.html nunca se cachea: es quien apunta a los assets nuevos tras un deploy.
+# config.js tampoco: se edita a mano y el cambio debe verse al instante.
+<FilesMatch "^(index\.html|config\.js)$">
+  <IfModule mod_headers.c>
+    Header set Cache-Control "no-cache, no-store, must-revalidate"
+  </IfModule>
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  # En index.html estaban como <meta>, donde el navegador las ignora: solo
+  # valen como cabecera HTTP real.
+  Header set X-Frame-Options "SAMEORIGIN"
+  # Un año, sin includeSubDomains ni preload: cubre tobais.com sin
+  # comprometer subdominios que puedan no tener HTTPS.
+  Header always set Strict-Transport-Security "max-age=31536000"
+</IfModule>

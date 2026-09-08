@@ -34,6 +34,9 @@ export const enTranslations = {
   hero: {
     title: "AI-Powered Digital Marketing Solutions",
     subtitle: "TOBAIS is a creative agency focused on Web Design, Automation, Branding, and Social Media Marketing — helping entrepreneurs and businesses build a strong digital presence across the U.S. and LATAM.",
+    // Descripción para buscadores: el subtítulo de arriba son 197 caracteres y
+    // Google corta sobre los 155. Se mantiene aquel como texto visible.
+    metaDescription: "Web design, automation, branding and social media for businesses in the U.S. and LATAM. Bilingual team in Charlotte, NC and Montevideo.",
     cta1: "Get a Quote",
     cta2: "Schedule a Call",
     scrollDown: "Scroll Down",

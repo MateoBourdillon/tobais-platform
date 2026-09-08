@@ -15,11 +15,14 @@
     <!-- Security Headers -->
     <!-- CSP DISABLED FOR DEVELOPMENT -->
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src https:; script-src https: 'unsafe-inline' 'unsafe-eval'; style-src https: 'unsafe-inline'; img-src https: data:; font-src https: data:; connect-src https:; frame-src https:; upgrade-insecure-requests;"> -->
-    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains; preload">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <!-- Strict-Transport-Security y X-Frame-Options solo son válidas como
+         cabecera HTTP real; en <meta> el navegador las ignora y avisa por
+         consola. Ambas se envían ahora desde .htaccess. -->
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <link rel="icon" type="image/webp" href="/images/TOBAIS_NewLogoT_webp.webp">
+    <link rel="apple-touch-icon" href="/images/TOBAIS_NewLogoT_webp.webp">
     <title>TOBAIS - AI-Powered Digital Marketing</title>
     <meta name="description" content="TOBAIS is a creative agency focused on Web Design, Automation, Branding, and Social Media Marketing — powered by Artificial Intelligence — for businesses in the U.S. and LATAM." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,6 +32,8 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- Se carga antes que la app: define la URL del backend sin recompilar. -->
+    <script src="/config.js"></script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

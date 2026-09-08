@@ -1,0 +1,73 @@
+# Blueprint de Render para el backend de TOBAIS.
+# El frontend estático se sirve aparte desde Hostinger (dist/public -> public_html).
+#
+# Uso: en Render -> New -> Blueprint -> conectar este repositorio.
+# Las variables con `sync: false` se piden al desplegar y no se guardan en git.
+
+services:
+  - type: web
+    name: tobais-api
+    runtime: node
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: npm install && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+      # Dominios del frontend autorizados a llamar a esta API (separados por coma).
+      # Sin esto, el navegador bloquea las peticiones con cookie de sesión.
+      - key: ALLOWED_ORIGINS
+        value: https://tobais.com,https://www.tobais.com
+
+      # --- Base de datos (Neon) ---
+      - key: DATABASE_URL
+        sync: false
+
+      # --- Sesiones ---
+      - key: SESSION_SECRET
+        generateValue: true
+
+      # --- Pagos ---
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: PAYPAL_CLIENT_ID
+        sync: false
+      - key: PAYPAL_CLIENT_SECRET
+        sync: false
+      - key: PAYPAL_ENVIRONMENT
+        value: production
+
+      # --- IA ---
+      - key: OPENAI_API_KEY
+        sync: false
+
+      # --- Email ---
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: GMAIL_CLIENT_ID
+        sync: false
+      - key: GMAIL_CLIENT_SECRET
+        sync: false
+      - key: GMAIL_REFRESH_TOKEN
+        sync: false
+      - key: GMAIL_EMAIL
+        sync: false
+      - key: MAIL_FROM
+        sync: false
+
+      # --- Voz (Retell) ---
+      - key: RETELL_API_KEY
+        sync: false
+      - key: RETELL_AGENT_ID
+        sync: false
+
+      # --- URLs públicas usadas en emails y enlaces de pago ---
+      - key: APP_URL
+        value: https://tobais.com
+      - key: BASE_URL
+        value: https://tobais.com

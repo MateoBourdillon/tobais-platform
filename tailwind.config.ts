@@ -24,6 +24,22 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          // El código usa primary-50 … primary-950 en 29 archivos (degradados de
+          // cabecera, textos de acento, fondos de tarjeta). Sin estas claves esas
+          // clases no existen y Tailwind no genera nada: por eso el <h1> de
+          // /projects quedaba blanco sobre blanco. La escala mantiene el tono de
+          // --primary (222.2 47.4% 11.2%) para no cambiar la identidad.
+          50: "hsl(222 47% 96%)",
+          100: "hsl(222 47% 91%)",
+          200: "hsl(222 47% 82%)",
+          300: "hsl(222 47% 70%)",
+          400: "hsl(222 47% 58%)",
+          500: "hsl(222 47% 46%)",
+          600: "hsl(222 47% 38%)",
+          700: "hsl(222 47% 29%)",
+          800: "hsl(222 47% 21%)",
+          900: "hsl(222 47% 14%)",
+          950: "hsl(222 47% 8%)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",

@@ -113,7 +113,7 @@ export default function ProjectDetailPage() {
     ];
   } else if (project.id === 7) { // UruDomótica
     projectImages = [
-      "/images/home.png", // Home principal
+      "/images/urudomotica-home.png", // Home principal
       "/images/servicios.png", // Servicios
       "/images/beneficios.png", // Beneficios
       "/images/proceso.png", // Proceso

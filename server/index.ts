@@ -12,13 +12,27 @@ app.use(express.urlencoded({ extended: false }));
 // Configurar headers de seguridad con Helmet - DESACTIVADO EN DESARROLLO
 // setupSecurityHeaders(app);
 
+// Orígenes autorizados del frontend. El frontend estático vive en otro dominio
+// (Hostinger) que el backend (Render), así que el CORS tiene que ser explícito:
+// con credenciales, el comodín "*" es rechazado por el navegador.
+const allowedOrigins = (process.env.ALLOWED_ORIGINS ?? '')
+  .split(',')
+  .map((o) => o.trim().replace(/\/+$/, ''))
+  .filter(Boolean);
+
 // Add middleware to enable CORS and help with domain access
 app.use((req, res, next) => {
-  // Set CORS headers to allow access from any origin - very permissive for troubleshooting
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  const origin = req.headers.origin;
+
+  if (origin && (allowedOrigins.length === 0 || allowedOrigins.includes(origin))) {
+    // Se devuelve el origen concreto, no "*", para que viaje la cookie de sesión.
+    res.header('Access-Control-Allow-Origin', origin);
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.header('Vary', 'Origin');
+  }
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE, OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  
+
   // Add security-related headers
   res.header('X-Content-Type-Options', 'nosniff');
   res.header('Referrer-Policy', 'strict-origin-when-cross-origin');
@@ -296,10 +310,9 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // ALWAYS serve the app on port 5000
-  // this serves both the API and the client.
-  // It is the only port that is not firewalled.
-  const port = 5000;
+  // Render (y la mayoría de PaaS) inyectan el puerto por entorno; en local
+  // se mantiene el 5000 de siempre.
+  const port = Number(process.env.PORT) || 5000;
   server.listen({
     port,
     host: "0.0.0.0",
