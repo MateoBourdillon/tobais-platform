@@ -1,3 +1,4 @@
+import { deliverContactEmail } from './contact-delivery';
 import nodemailer from "nodemailer";
 import { google } from "googleapis";
 import { OAuth2Client } from "google-auth-library";
@@ -119,11 +120,6 @@ function configureSmtpFallback() {
 
 // Enviar email de notificación de contacto
 export async function sendContactNotification(data: any) {
-  if (!isEmailConfigured || !emailTransporter) {
-    console.warn("Email service not configured. Cannot send notification.");
-    return false;
-  }
-
   try {
     const mailOptions = {
       from: process.env.GMAIL_EMAIL || process.env.EMAIL_USER,
@@ -139,9 +135,7 @@ export async function sendContactNotification(data: any) {
       `,
     };
 
-    const info = await emailTransporter.sendMail(mailOptions);
-    console.log("Contact notification email sent:", info.messageId);
-    return true;
+    return await deliverContactEmail(mailOptions);
   } catch (error) {
     console.error("Error sending contact notification email:", error);
     return false;
@@ -150,11 +144,6 @@ export async function sendContactNotification(data: any) {
 
 // Enviar respuesta automática al remitente
 export async function sendContactAutoReply(data: any) {
-  if (!isEmailConfigured || !emailTransporter) {
-    console.warn("Email service not configured. Cannot send auto-reply.");
-    return false;
-  }
-
   try {
     const mailOptions = {
       from: process.env.GMAIL_EMAIL || process.env.EMAIL_USER,
@@ -266,9 +255,7 @@ export async function sendContactAutoReply(data: any) {
       `,
     };
 
-    const info = await emailTransporter.sendMail(mailOptions);
-    console.log("Auto-reply email sent:", info.messageId);
-    return true;
+    return await deliverContactEmail(mailOptions);
   } catch (error) {
     console.error("Error sending auto-reply email:", error);
     return false;
